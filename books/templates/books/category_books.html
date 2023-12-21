@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1>{{ category_name }}</h1>
+    <div class="row">
+        {% for book in books_list %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">Author: {{ book.author }}</p>
+                        <p class="card-text">Published: {{ book.published_year }}</p>
+
+                        <a href={% url 'books:book_detail' book.id %}> Подробнее ... </a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Книг нет... :(</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

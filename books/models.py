@@ -1,4 +1,5 @@
 from django.http import Http404
+from django.db import models
 
 # Список категорий
 categories_data = [
@@ -107,3 +108,23 @@ def get_book_or_404(books_list, book_id):
             return book
 
     raise Http404
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=32)
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=128)
+    description = models.TextField(default="")
+    author = models.CharField(max_length=128)
+    published_year = models.PositiveSmallIntegerField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,
+                                 related_name="books")
+
+    def __str__(self):
+        return self.title

@@ -28,9 +28,8 @@ def book_detail(request, book_id):
 
 
 def category_books(request, category_slug):
-    books_list = [book for book in models.books if book["category"] == category_slug]
     context = {
-        "books_list": books_list,
-        "categories": models.categories_data,
+        "books_list": models.Book.objects.filter(category__slug=category_slug),
+        "categories": models.Category.objects.all(),
     }
     return render(request, "books/category_books.html", context=context)

@@ -24,4 +24,5 @@ urlpatterns = [
     path('json_path/', my_json_view),
     path('show_http_method/', ShowHTTPMethodView.as_view()),
     path('', include("books.urls")),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]

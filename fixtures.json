@@ -1,0 +1,136 @@
+[
+  {
+    "model": "books.category",
+    "pk": 1,
+    "fields": {
+      "name": "Python",
+      "slug": "python"
+    }
+  },
+  {
+    "model": "books.category",
+    "pk": 2,
+    "fields": {
+      "name": "Веб-разработка",
+      "slug": "web-development"
+    }
+  },
+  {
+    "model": "books.category",
+    "pk": 3,
+    "fields": {
+      "name": "JavaScript",
+      "slug": "javascript"
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 1,
+    "fields": {
+      "title": "Flask в действии",
+      "description": "Погружение в веб-разработку с использованием Flask.",
+      "author": "Мигель Гринберг",
+      "published_year": 2014,
+      "category": 2
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 2,
+    "fields": {
+      "title": "Django для начинающих",
+      "description": "Изучение веб-разработки с использованием Django.",
+      "author": "Уильям С. Винсент",
+      "published_year": 2018,
+      "category": 2
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 3,
+    "fields": {
+      "title": "Python. Эффективное программирование",
+      "description": "Освоение эффективных практик программирования на Python.",
+      "author": "Бретт Слэткин",
+      "published_year": 2015,
+      "category": 1
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 4,
+    "fields": {
+      "title": "Fluent Python",
+      "description": "Продвинутое программирование на Python.",
+      "author": "Люсиано Рамалью",
+      "published_year": 2015,
+      "category": 1
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 5,
+    "fields": {
+      "title": "JavaScript и jQuery: Новые возможности",
+      "description": "Изучение веб-разработки с использованием JavaScript и jQuery.",
+      "author": "Дэвид Сойер Макфарланд",
+      "published_year": 2014,
+      "category": 3
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 6,
+    "fields": {
+      "title": "Python. Тестирование программ",
+      "description": "Практическое руководство по тестированию программ на Python.",
+      "author": "Брайан Окенхейм",
+      "published_year": 2014,
+      "category": 1
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 7,
+    "fields": {
+      "title": "Flask Web Development",
+      "description": "Developing Web Applications with Python and Flask.",
+      "author": "Miguel Grinberg",
+      "published_year": 2014,
+      "category": 2
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 8,
+    "fields": {
+      "title": "Python Crash Course",
+      "description": "A Hands-On, Project-Based Introduction to Programming.",
+      "author": "Eric Matthes",
+      "published_year": 2015,
+      "category": 1
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 9,
+    "fields": {
+      "title": "Vue.js в действии",
+      "description": "Разработка современных веб-приложений с использованием Vue.js.",
+      "author": "Эрик Рэндольф",
+      "published_year": 2018,
+      "category": 2
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 10,
+    "fields": {
+      "title": "Effective Python: 90 способов улучшить свой Python код",
+      "description": "Рекомендации по улучшению стиля и эффективности написания Python кода.",
+      "author": "Бретт Слэткин",
+      "published_year": 2015,
+      "category": 1
+    }
+  }
+]

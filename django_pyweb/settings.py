@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "debug_toolbar",
+    "rest_framework",
+    'drf_spectacular',
+    "django_filters",
 
     'books',
 ]
@@ -135,3 +138,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
     "localhost",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}

@@ -3,9 +3,10 @@ from rest_framework import serializers
 from books import models
 
 
-class CategorySerializer(serializers.Serializer):
-    name = serializers.CharField(max_length=32)
-    slug = serializers.SlugField()
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Category
+        fields = ("id", "name", "slug")
 
 
 class BookSerializer(serializers.ModelSerializer):

@@ -40,14 +40,61 @@ class TestCategoryViewSet(APITestCase):
 
     def test_create_categories(self):
         """Тестирую список категорий."""
-        ...
+        # Действие
+        url = "/api/categories/"
+
+        data = {
+            "name": "Тестовая категория",
+            "slug": "test_slug",
+        }
+        resp = self.client.post(url, data=data)
+
+        self.assertEquals(resp.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(Category.objects.filter(id=resp.json()["id"]).exists())
+
+
+class TestRetriveUpdateDelete(APITestCase):
+    def setUp(self) -> None:
+        self.category = Category.objects.create(**{
+            "name": "Тестовая категория",
+            "slug": "test_slug",
+        })
 
     # /categories/<int:pk>
     def test_retrieve_category(self):
-        ...
+        url = f"/api/categories/{self.category.id}/"
+        resp = self.client.get(url)
+
+        self.assertEquals(resp.status_code, status.HTTP_200_OK)
+        self.assertIsInstance(resp.json(), dict, msg="Ожидается словарь")
 
     def test_update_category(self):
-        ...
+        update_data = {
+            "name": "Новое название",
+            "slug": "new_slug",
+        }
+        url = f"/api/categories/{self.category.id}/"
+        resp = self.client.put(url, data=update_data)
+
+        self.assertEquals(resp.status_code, status.HTTP_200_OK)
+        self.assertIsInstance(resp.json(), dict, msg="Ожидается словарь")
+
+        excected_result = {
+            "id": self.category.id,
+            "name": "Новое название",
+            "slug": "new_slug",
+        }
+        self.assertEquals(resp.json(), excected_result)
 
     def test_destroy(self):
-        ...
+        url = f"/api/categories/{self.category.id}/"
+        resp = self.client.delete(url)
+
+        self.assertEquals(resp.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_object_not_exists(self):
+        does_not_exists_id = 99999999999999
+        url = f"/api/categories/{does_not_exists_id}/"
+        resp = self.client.get(url)
+
+        self.assertEquals(resp.status_code, status.HTTP_404_NOT_FOUND)

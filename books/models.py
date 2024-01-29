@@ -1,6 +1,10 @@
 from django.http import Http404
 from django.db import models
 
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 # Список категорий
 categories_data = [
     {
@@ -125,6 +129,7 @@ class Book(models.Model):
     published_year = models.PositiveSmallIntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  related_name="books")
+    favorites = models.ManyToManyField(User, related_name="favorite_books")
 
     def __str__(self):
         return self.title

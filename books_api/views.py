@@ -1,5 +1,6 @@
 from rest_framework import generics, viewsets
 from django_filters import rest_framework as filters
+from rest_framework.permissions import IsAuthenticated
 
 from books.models import Book, Category
 from . import serializers
@@ -20,3 +21,11 @@ class BookAPIView(generics.RetrieveUpdateDestroyAPIView):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = serializers.CategorySerializer
+
+
+class FavoriteListAPIVew(generics.ListAPIView):
+    serializer_class = serializers.BookSerializer
+    permission_classes = [IsAuthenticated,]
+
+    def get_queryset(self):
+        return self.request.user.favorite_books.all()

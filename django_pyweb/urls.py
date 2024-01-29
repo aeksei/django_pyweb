@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 from first_app.views import my_first_view, my_json_view, ShowHTTPMethodView
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +31,7 @@ urlpatterns = [
     path('show_http_method/', ShowHTTPMethodView.as_view()),
     path('', include("books.urls")),
     path('api/', include("books_api.urls")),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path("__debug__/", include("debug_toolbar.urls")),
 ]

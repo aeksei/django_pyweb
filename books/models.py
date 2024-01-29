@@ -129,7 +129,7 @@ class Book(models.Model):
     published_year = models.PositiveSmallIntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  related_name="books")
-    favorites = models.ManyToManyField(User)
+    favorites = models.ManyToManyField(User, related_name="favorite_books")
 
     def __str__(self):
         return self.title
